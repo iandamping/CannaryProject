@@ -8,7 +8,7 @@ abstract class BaseViewModel:ViewModel() {
     protected val compositeDisposable by lazy { CompositeDisposable() }
 
     protected fun <T> error(message: String): ResultToConsume<T> {
-        return ResultToConsume.error("Network call has failed for a following reason: $message")
+        return ResultToConsume.Error("Network call has failed for a following reason: $message")
     }
 
     protected  fun timberLogE(msg: String?) {

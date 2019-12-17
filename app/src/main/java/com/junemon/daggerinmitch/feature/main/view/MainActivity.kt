@@ -35,11 +35,11 @@ class MainActivity : BaseActivity() {
     private fun ActivityMainBinding.initView(){
         apply {
             mainViewModel.observeGame.observe(this@MainActivity, Observer {result ->
-                when(result.status){
-                    ResultToConsume.Status.ERROR -> {
+                when(result){
+                    is ResultToConsume.Error -> {
                         setDialogShow(true)
                     }
-                    ResultToConsume.Status.SUCCESS -> {
+                    is ResultToConsume.Success -> {
                         setDialogShow(true)
                         adapter.submitList(result.data)
                     }

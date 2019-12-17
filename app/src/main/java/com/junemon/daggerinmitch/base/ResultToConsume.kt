@@ -1,5 +1,6 @@
 package com.junemon.daggerinmitch.base
 
+/*
 data class ResultToConsume<out T>(val status: Status, val data: T?, val message: String?) {
 
     enum class Status {
@@ -21,4 +22,14 @@ data class ResultToConsume<out T>(val status: Status, val data: T?, val message:
             return ResultToConsume(Status.LOADING, data, null)
         }
     }
+}*/
+
+sealed class ResultToConsume<T>(
+    val data: T? = null,
+    val message: String? = null
+) {
+    class Success<T>(data: T) : ResultToConsume<T>(data)
+    class Loading<T>(data: T? = null) : ResultToConsume<T>(data)
+    class Error<T>(message: String, data: T? = null) : ResultToConsume<T>(data, message)
 }
+

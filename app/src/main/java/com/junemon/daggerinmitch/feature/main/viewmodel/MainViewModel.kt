@@ -27,10 +27,10 @@ class MainViewModel @Inject constructor(private val api:ApiInterface): BaseViewM
             compositeDisposable.add(
                 api.getGames().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe {
-                        _observeGame.postValue(ResultToConsume.loading())
+                        _observeGame.postValue(ResultToConsume.Loading())
                     }
                     .subscribe({
-                        _observeGame.postValue(ResultToConsume.success(it.data))
+                        _observeGame.postValue(ResultToConsume.Success(it.data))
                     }, {
                         _observeGame.postValue(error(it.message!!))
                     })
