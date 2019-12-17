@@ -4,10 +4,13 @@ import android.app.Application
 import com.junemon.daggerinmitch.MainApplication
 import com.junemon.daggerinmitch.di.module.ActivityBuildersModule
 import com.junemon.daggerinmitch.di.module.AppModule
+import com.junemon.daggerinmitch.di.module.NetworkModule
+import com.junemon.daggerinmitch.di.module.ViewModelFactoryModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 /*Component is service
@@ -16,9 +19,11 @@ import javax.inject.Singleton
 * when using DaggerApplication we must use this androidinjection module otherwise it cannot be compiled*/
 @Singleton
 @Component(
-    modules = [AndroidInjectionModule::class,
+    modules = [AndroidSupportInjectionModule::class,
         AppModule::class,
-        ActivityBuildersModule::class]
+        NetworkModule::class,
+        ActivityBuildersModule::class,
+        ViewModelFactoryModule::class]
 )
 interface AppComponent : AndroidInjector<MainApplication> {
     /*inject mainapplication in this component

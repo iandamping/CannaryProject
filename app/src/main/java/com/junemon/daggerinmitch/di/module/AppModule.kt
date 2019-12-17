@@ -7,6 +7,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.junemon.daggerinmitch.R
 import dagger.Module
 import dagger.Provides
+import java.lang.annotation.ElementType
 import javax.inject.Singleton
 
 @Module
